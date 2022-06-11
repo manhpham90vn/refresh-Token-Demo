@@ -2,6 +2,16 @@
 ## refresh token very sample
 ## create with https://expressjs.com/en/starter/generator.html
 
+### install
+```
+npm install
+```
+
+### run
+```
+npm start
+```
+
 ## user
 ```shell
 "email": "admin@admin.com"
