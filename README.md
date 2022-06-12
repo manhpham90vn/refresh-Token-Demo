@@ -47,4 +47,10 @@ curl --location --request POST 'http://localhost:3000/refreshToken' \
 --data-urlencode 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmhAYWRtaW4uY29tIiwiaWF0IjoxNjU0OTY2NzA3LCJleHAiOjE2NTQ5NjY4ODd9.kt6Jrl_VroU7FQJHPvFfpOZT4DT7FO_Ai4qGpCzX44Y'
 ```
 
+### paging
+```
+curl --location --request GET 'http://localhost:3000/paging?page=1' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmhAYWRtaW4uY29tIiwiaWF0IjoxNjU1MDA0OTgzLCJleHAiOjE2NTUwMDUwNDN9.C1IWArx7RTqYI0OOhYsowspxcc3VG_-LwGUj698AXyI'
+```
+
 ### token expired in 1 minute and refresh token expired in 3 minute
