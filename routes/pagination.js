@@ -18,7 +18,8 @@ router.get('/', function (req, res) {
                 "id": i,
                 "name": randomName() + " " + i,
                 "age": Math.floor(Math.random() * 60) + 20,
-                "website": "https://github.com/manhpham90vn"
+                "website": "https://github.com/manhpham90vn",
+                "type": "web"
             })
         }
     } else if (sort == "descending") {
@@ -27,7 +28,8 @@ router.get('/', function (req, res) {
                 "id": i,
                 "name": randomName() + " " + i,
                 "age": Math.floor(Math.random() * 60) + 20,
-                "website": "https://github.com/manhpham90vn"
+                "img": "https://avatars.githubusercontent.com/u/40340023?v=4",
+                "type": "img"
             })
         }
     }
