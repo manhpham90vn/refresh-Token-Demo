@@ -9,15 +9,27 @@ var randomName = require('node-random-name');
 router.use(require('../middleware/checkToken'));
 router.get('/', function (req, res) {
     var page = req.query.page
+    var sort = req.query.sort
     var arrs = [];
     var count = 60
-    for (let i = 0; i < count; i++) {
-        arrs.push({
-            "id": i,
-            "name": randomName() + " " + i,
-            "age": Math.floor(Math.random() * 60) + 20,
-            "website": "https://github.com/manhpham90vn"
-        })
+    if (sort == "ascending") {
+        for (let i = 0; i < count; i++) {
+            arrs.push({
+                "id": i,
+                "name": randomName() + " " + i,
+                "age": Math.floor(Math.random() * 60) + 20,
+                "website": "https://github.com/manhpham90vn"
+            })
+        }
+    } else if (sort == "descending") {
+        for (let i = 59; i > -1; i--) {
+            arrs.push({
+                "id": i,
+                "name": randomName() + " " + i,
+                "age": Math.floor(Math.random() * 60) + 20,
+                "website": "https://github.com/manhpham90vn"
+            })
+        }
     }
     if (page == 1) {
         res.json({ array: arrs.slice(0, 19) });
