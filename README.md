@@ -12,6 +12,13 @@ npm install
 npm start
 ```
 
+### run on docker
+```
+docker build .
+docker images -a
+docker run -p 3000:3000 -i -t e873da77a4f0
+```
+
 ## user
 ```shell
 "email": "admin@admin.com"
@@ -27,30 +34,22 @@ npm start
 
 ### login
 ```
-curl --location --request POST 'http://localhost:3000/login' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'email=manh@admin.com' \
---data-urlencode 'password=123456'
+curl -H "Host: localhost:3000" -H "User-Agent: okhttp/5.0.0-alpha.10" --data "email=admin%40admin.com&password=pwd12345" --compressed "http://localhost:3000/login"
 ```
 
 ### user
 ```
-curl --location --request GET 'http://localhost:3000/user' \
---header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmhAYWRtaW4uY29tIiwiaWF0IjoxNjU0OTY2Nzg3LCJleHAiOjE2NTQ5NjY4NDd9.ZD9aqMva0SPPMS304fpGlFfadV3hYOpm6CJy32VO7Dc'
+curl -H "authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTY1ODk5MzI5MSwiZXhwIjoxNjU4OTkzMzUxfQ.2U4DTv5F87jGfgDJXtcFR6olkHpNPdyR1kGYndLLBo8" -H "Host: localhost:3000" -H "User-Agent: okhttp/5.0.0-alpha.10" --compressed "http://localhost:3000/user"
 ```
 
 ### refreshToken
 ```
-curl --location --request POST 'http://localhost:3000/refreshToken' \
---header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInBhc3N3b3JkIjoicHdkMTIzNDUiLCJpYXQiOjE2NTQ5MjQ4NDgsImV4cCI6MTY1NDkyNDkwOH0.-IwNVOM-1i3QMF8PJ9VdL8b-kbMZfK4789jXrTaf3jQ' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmhAYWRtaW4uY29tIiwiaWF0IjoxNjU0OTY2NzA3LCJleHAiOjE2NTQ5NjY4ODd9.kt6Jrl_VroU7FQJHPvFfpOZT4DT7FO_Ai4qGpCzX44Y'
+curl -H "Host: localhost:3000" -H "User-Agent: okhttp/5.0.0-alpha.10" --data "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTY1ODk5MzI5MSwiZXhwIjoxNjU4OTkzNDcxfQ.CvOuUQ7C4iGeHXYVL6dLEOCkIvu4r-zsT7KkpxcTkZc" --compressed "http://localhost:3000/refreshToken"
 ```
 
 ### paging
 ```
-curl --location --request GET 'http://localhost:3000/paging?page=1' \
---header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmhAYWRtaW4uY29tIiwiaWF0IjoxNjU1MDA0OTgzLCJleHAiOjE2NTUwMDUwNDN9.C1IWArx7RTqYI0OOhYsowspxcc3VG_-LwGUj698AXyI'
+curl -H "authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTY1ODk5MzI5MSwiZXhwIjoxNjU4OTkzMzUxfQ.2U4DTv5F87jGfgDJXtcFR6olkHpNPdyR1kGYndLLBo8" -H "Host: localhost:3000" -H "User-Agent: okhttp/5.0.0-alpha.10" --compressed "http://localhost:3000/paging?page=1&sort=ascending"
 ```
 
 ### token expired in 1 minute and refresh token expired in 3 minute
