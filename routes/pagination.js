@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
     var page = req.query.page
     var sort = req.query.sort
     var arrs = [];
-    var count = 60
+    var count = 200
     if (sort == "ascending") {
         for (let i = 0; i < count; i++) {
             arrs.push({
@@ -23,7 +23,7 @@ router.get('/', function (req, res) {
             })
         }
     } else if (sort == "descending") {
-        for (let i = 59; i > -1; i--) {
+        for (let i = 199; i > -1; i--) {
             arrs.push({
                 "id": i,
                 "name": randomName() + " " + i,
@@ -39,6 +39,20 @@ router.get('/', function (req, res) {
         res.json({ array: arrs.slice(20, 39) });
     } else if (page == 3) {
         res.json({ array: arrs.slice(40, 59) });
+    } else if (page == 4) {
+        res.json({ array: arrs.slice(60, 79) });
+    } else if (page == 5) {
+        res.json({ array: arrs.slice(80, 99) });
+    } else if (page == 6) {
+        res.json({ array: arrs.slice(100, 119) });
+    } else if (page == 7) {
+        res.json({ array: arrs.slice(120, 139) });
+    } else if (page == 8) {
+        res.json({ array: arrs.slice(140, 159) });
+    } else if (page == 9) {
+        res.json({ array: arrs.slice(160, 179) });
+    } else if (page == 10) {
+        res.json({ array: arrs.slice(180, 199) });
     } else {
         res.json({ array: [] });
     }
